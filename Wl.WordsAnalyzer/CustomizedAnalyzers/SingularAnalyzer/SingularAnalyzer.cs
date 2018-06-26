@@ -1,5 +1,5 @@
 ﻿/*----------------------------------------------------------------
-    Weilan
+    Daniel.Zhang
     
     文件名：SingularAnalyzer.cs
     文件功能描述：单数化 分析器
@@ -13,11 +13,20 @@ using System.Collections.Generic;
 using Version = Lucene.Net.Util.Version;
 namespace Wl.WordsAnalyzer
 {
-    public class SingularAnalyzer : Analyzer
+    public class SingularAnalyzer : Analyzer, IAnalyzer
     {
         #region parameter
 
-        private const Version CURRENT_VERSION = Version.LUCENE_30;
+        private readonly Version CURRENT_VERSION;
+
+        #endregion
+
+        #region constructor
+
+        public SingularAnalyzer(Version currentVersion)
+        {
+            CURRENT_VERSION = currentVersion;
+        }
 
         #endregion
 

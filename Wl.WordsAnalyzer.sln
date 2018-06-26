@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wl.WordsAnalyzer", "Wl.WordsAnalyzer\Wl.WordsAnalyzer.csproj", "{351F88AA-BAA1-4B7C-BFB3-170D8533D84E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wl.WordsAnalyzer.Test", "Wl.WordsAnalyzer.Test\Wl.WordsAnalyzer.Test.csproj", "{54BE17B4-6487-4A76-BD1A-D3BFE46867B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{351F88AA-BAA1-4B7C-BFB3-170D8533D84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351F88AA-BAA1-4B7C-BFB3-170D8533D84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{351F88AA-BAA1-4B7C-BFB3-170D8533D84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BE17B4-6487-4A76-BD1A-D3BFE46867B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BE17B4-6487-4A76-BD1A-D3BFE46867B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BE17B4-6487-4A76-BD1A-D3BFE46867B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BE17B4-6487-4A76-BD1A-D3BFE46867B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

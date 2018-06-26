@@ -1,5 +1,5 @@
 ﻿/*----------------------------------------------------------------
-    Weilan
+    Daniel.Zhang
     
     文件名：SynonymAnalyzer.cs
     文件功能描述：同义词分析器
@@ -9,14 +9,15 @@ using System;
 using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
 using Version = Lucene.Net.Util.Version;
+using System.Configuration;
 
 namespace Wl.WordsAnalyzer
 {
-    public class SynonymAnalyzer : Analyzer
+    public class SynonymAnalyzer : Analyzer, IAnalyzer
     {
         #region parameter
 
-        private const Version CURRENT_VERSION = Version.LUCENE_30;
+        private Version CURRENT_VERSION;
 
         public ISynonymEngine SynonymEngine { get; private set; }
 
@@ -24,8 +25,16 @@ namespace Wl.WordsAnalyzer
 
         #region constructor
 
-        public SynonymAnalyzer(ISynonymEngine engine)
+        public SynonymAnalyzer(Version currentVersion)
         {
+            var pathSynonymDict = ConfigurationManager.AppSettings["SynonymDictionaryPath"] ?? System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"/lucene_dict/syn_index");
+            CURRENT_VERSION = currentVersion;
+            SynonymEngine = new Wl.WordsAnalyzer.WordNetSynonymEngine(pathSynonymDict);
+        }
+
+        public SynonymAnalyzer(Version currentVersion, ISynonymEngine engine)
+        {
+            CURRENT_VERSION = currentVersion;
             SynonymEngine = engine;
         }
 

@@ -1,5 +1,5 @@
 ﻿/*----------------------------------------------------------------
-    Weilan
+    Daniel.Zhang
     
     文件名：WordNetSynonymEngine.cs
     文件功能描述：word net 同义词引擎
@@ -14,10 +14,10 @@ using Lucene.Net.Documents;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
-
+using Wl.WordsAnalyzer.Extension;
 using LuceneDirectory = Lucene.Net.Store.Directory;
 using Version = Lucene.Net.Util.Version;
-
+using System.Configuration;
 
 namespace Wl.WordsAnalyzer
 {
@@ -27,11 +27,11 @@ namespace Wl.WordsAnalyzer
 
         private const int TOP_NUMBER = 1000;
 
-        private const Version CURRENT_VERSION = Version.LUCENE_30;
+        private Version CURRENT_VERSION;
 
         private IndexSearcher searcher;
 
-        private Analyzer analyzer = new StandardAnalyzer(CURRENT_VERSION);
+        private Analyzer analyzer;
 
         #endregion
 
@@ -43,6 +43,9 @@ namespace Wl.WordsAnalyzer
         /// <param name="syn_index_directory"></param>
         public WordNetSynonymEngine(string syn_index_directory)
         {
+            var luceneVersionStr = ConfigurationManager.AppSettings["LuceneVersion"] ?? "LUCENE_CURRENT";
+            CURRENT_VERSION = luceneVersionStr.ParseLuceneVersion();
+            analyzer = new StandardAnalyzer(CURRENT_VERSION);
             LuceneDirectory indexDir = FSDirectory.Open(new DirectoryInfo(syn_index_directory));
             searcher = new IndexSearcher(indexDir, true);
         }
